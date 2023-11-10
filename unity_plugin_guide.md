@@ -2,95 +2,32 @@
 
 ## 목차
 
-1. [Unity Settings](#1-unity-settings)
-    * [Plugin Download](#plugin-download)
-    * [Plugin Import](#plugin-import)
-    * [gradleTemplate.properties 설정](#gradletemplateproperties-설정)
-    * [baseProjectTemplate.gradle 설정](#baseprojecttemplategradle-설정)
-    * [mainTemplate.gradle 설정](#maintemplategradle-설정)
-    * [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
-        * [Permission 설정](#permission-설정)
-        * [Tnk App ID 설정](#tnk-app-id-설정)
-        * [Offerwall Activity 설정](#offerwall-activity-설정)
-        * [UnityPlayer](#unityplayer-설정)
-    * [COPPA 설정](#coppa-설정)
-2. [Publisher API](#2-publisher-api)
-
-   가. [광고 목록 띄우기](#가-광고-목록-띄우기)
-
-    * [유저 식별 값 설정](#유저-식별-값-설정)
-        * [Method](#method)
-        * [Parameters](#parameters)
-    * [광고 목록 띄우기 (전체화면)](#광고-목록-띄우기-전체화면)
-        * [Method](#method-1)
-        * [Description](#description)
-        * [Parameters](#parameters-1)
-        * [적용 예시](#적용-예시)
-    * [광고 띄우기 (팝업화면)](#광고-띄우기-팝업화면)
-        * [Method](#method-2)
-        * [Description](#description-1)
-        * [Parameters](#parameters-2)
-        * [적용 예시](#적용-예시-1)
-    * [멀티탭 광고 목록 띄우기 (전체화면)](#멀티탭-광고-목록-띄우기-전체화면)
-        * [Method](#method-3)
-        * [Description](#description-2)
-        * [Parameters](#parameters-3)
-        * [적용 예시](#적용-예시-2)
-
-   나. [EventHandler](#나-eventhandler)
-
-    * [EventHandler 스크립트 만들기](#eventhandler-스크립트-만들기)
-    * [GameObject에 추가하고 Handler Name 지정](#gameobject에-추가하고-handler-name-지정)
-    * [설정한 Handler Name을 사용하여 Plugin API 호출](#설정한-handler-name을-사용하여-plugin-api-호출)
-
-   다. [포인트 조회 및 인출](#다-포인트-조회-및-인출)
-
-    * [TnkAd.Plugin - queryPoint()](#tnkadplugin---querypoint)
-        * [Method](#method-4)
-        * [Description](#description-3)
-        * [Parameters](#parameters-4)
-    * [TnkAd.Plugin - purchaseItem()](#tnkadplugin---purchaseitem)
-        * [Method](#method-5)
-        * [Description](#description-4)
-        * [Parameters](#parameters-5)
-    * [TnkAd.Plugin - withdrawPoints()](#tnkadplugin---withdrawpoints)
-        * [Method](#method-6)
-        * [Description](#description-5)
-        * [Parameters](#parameters-6)
-        * [포인트 조회 및 인출 기능 적용예시](#포인트-조회-및-인출-기능-적용예시)
-
-   라. [그밖의 기능들](#라-그밖의-기능들)
-
-    * [TnkAd.Plugin - queryPublishState()](#tnkadplugin---querypublishstate)
-        * [Method](#method-7)
-        * [Parameters](#parameters-7)
-        * [적용 예시](#적용-예시-3)
-
-3. [Interstitial Ad](#3-interstitial-ad)
-    * [Incentive Interstitial Ad](#incentive-interstitial-ad)
-    * [Interstitial Ad APIs](#interstitial-ad-apis)
-        * [TnkAd.Plugin - prepareInterstitialAdForPPI()](#tnkadplugin---prepareinterstitialadforppi)
-            * [Method](#method-8)
-            * [Description](#description-6)
-            * [Parameters](#parameters-8)
-        * [TnkAd.Plugin - showInterstitialAdForPPI()](#tnkadplugin---showinterstitialadforppi)
-            * [Method](#method-9)
-            * [Description](#description-7)
-            * [Parameters](#parameters-9)
-        * [EventHandler 이용하기](#eventhandler-이용하기)
-        * [Sample](#sample)
-
-4. [Analytics Report](#4-analytics-report)
-
-    * [기본 설정](#기본-설정)
-    * [필수 호출](#필수-호출)
-        * [TnkSession.applicationStarted()](#tnkadplugin---applicationstarted)
-    * [사용 활동 분석](#사용-활동-분석)
-        * [TnkSession.actionCompleted()](#tnkadplugin---actioncompleted)
-    * [구매 활동 분석](#구매-활동-분석)
-        * [TnkSession.buyCompleted()](#tnkadplugin---buycompleted)
-    * [사용자 정보 설정](#사용자-정보-설정)
-
+- [1. Unity Settings](#1-unity-settings)
+  - [Plugin Download](#plugin-download)
+  - [Plugin Setting](#plugin-setting)
+  - [gradleTemplate.properties 설정](#gradletemplateproperties-설정)
+  - [baseProjectTemplate.gradle 설정](#baseprojecttemplategradle-설정)
+  - [mainTemplate.gradle 설정](#maintemplategradle-설정)
+  - [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
+    - [Permission 설정](#permission-설정)
+    - [Tnk App ID 설정](#tnk-app-id-설정)
+    - [Offerwall Activity 설정](#offerwall-activity-설정)
+    - [UnityPlayer 설정](#unityplayer-설정)
+  - [proguard 설정](#proguard-설정)
+- [2. Publisher API](#2-publisher-api)
+  - [광고 목록 띄우기](#광고-목록-띄우기)
+    - [유저 식별 값 설정](#유저-식별-값-설정)
+    - [광고 목록 띄우기 (전체화면)](#광고-목록-띄우기-전체화면)
+    - [EventHandler](#eventhandler)
+      - [EventHandler 스크립트 만들기](#eventhandler-스크립트-만들기)
+      - [GameObject에 추가하고 Handler Name 지정](#gameobject에-추가하고-handler-name-지정)
+      - [설정한 Handler Name을 사용하여 Plugin API 호출](#설정한-handler-name을-사용하여-plugin-api-호출)
+    - [포인트 조회 및 인출](#포인트-조회-및-인출)
+    - [그밖의 기능들](#그밖의-기능들)
+      - [TnkAd.Plugin - queryPoint()](#tnkadplugin---querypoint)
+      - [TnkAd.Plugin - purchaseItem()](#tnkadplugin---purchaseitem)
+      - [TnkAd.Plugin - withdrawPoints()](#tnkadplugin---withdrawpoints)
+      - [TnkAd.Plugin - queryPublishState()](#tnkadplugin---querypublishstate)
 
 ## 1. Unity Settings
 
@@ -379,7 +316,7 @@ public class TnkUITest : MonoBehaviour {
 Unity용 Plugin 으로 TnkAd.Plugin 클래스와 TnkAd.EventHandler 클래스가 제공됩니다.
 Plugin 클래스는 광고목록이나 중간 전면광고 등의 TnkAd의 기능을 사용하기 위해서는 제공되는 클래스입니다. EventHandler 클래스는 API 중 비동기로 결과를 받아야 하는 경우에 사용되는 클래스입니다.
 
-### 가. 광고 목록 띄우기
+### 광고 목록 띄우기
 
 다운받은 라이브러리의 TnkAd/sample/TnkUITest.cs 를 참고하세요
 
@@ -508,7 +445,7 @@ public class TnkUITest : MonoBehaviour {
 }
 ```
 
-### 나. EventHandler
+### EventHandler
 
 EventHandler 클래스는 포인트 조회나 포인트 인출과 같이 비동기로 결과를 받아야 하는 경우 또는 중간 전면광고에서 발생하는 이벤트를 처리하기 위해서 제공되는 클래스입니다.
 EventHandler 클래스의 모습은 아래와 같습니다.
@@ -606,7 +543,7 @@ if (GUI.Button(new Rect (100, 400, 150, 80), "Query point")) {
 }
 ```
 
-### 다. 포인트 조회 및 인출
+### 포인트 조회 및 인출
 
 사용자가 광고참여를 통하여 획득한 포인트는 Tnk서버에서 관리되거나 앱의 자체서버에서 관리될 수 있습니다.
 포인트가 Tnk 서버에서 관리되는 경우에만 아래의 포인트 조회 및 인출 API를 사용하시어 필요한 아이템 구매 기능을 구현하실 수 있습니다.
@@ -705,7 +642,7 @@ public class TnkUITest : MonoBehaviour {
 }
 ```
 
-### 라. 그밖의 기능들
+### 그밖의 기능들
 
 #### TnkAd.Plugin - queryPublishState()
 
