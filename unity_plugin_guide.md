@@ -38,6 +38,10 @@
 
 # 1. Unity Settings
 
+가이드의 내용대로 설정을 진행하는 참고 영상 입니다.
+
+[샘플 영상](https://drive.google.com/file/d/1Al5AX6bRX2yeWKf5OHhMbpox18r_TwqY/view?usp=sharing)
+
 ## Plugin Download
 
 적용 할 Unity 프로젝트를 연 상태에서 다음 이미지와 같이 프로젝트의 Packages폴더를 오른 클릭 후 폴더를 열어주세요
