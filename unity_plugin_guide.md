@@ -5,18 +5,25 @@
 - [1. Unity Settings](#1-unity-settings)
   - [Plugin Download](#plugin-download)
   - [Plugin Setting](#plugin-setting)
-  - [gradleTemplate.properties 설정](#gradletemplateproperties-설정)
-  - [baseProjectTemplate.gradle 설정](#baseprojecttemplategradle-설정)
-  - [mainTemplate.gradle 설정](#maintemplategradle-설정)
-  - [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
-    - [Permission 설정](#permission-설정)
-    - [Tnk App ID 설정](#tnk-app-id-설정)
-    - [Offerwall Activity 설정](#offerwall-activity-설정)
-    - [UnityPlayer 설정](#unityplayer-설정)
-  - [proguard 설정](#proguard-설정)
+  - [Android 설정](#android-설정)
+    - [gradleTemplate.properties 설정](#gradletemplateproperties-설정)
+    - [baseProjectTemplate.gradle 설정](#baseprojecttemplategradle-설정)
+    - [mainTemplate.gradle 설정](#maintemplategradle-설정)
+    - [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
+      - [Permission 설정](#permission-설정)
+      - [Tnk App ID 설정](#tnk-app-id-설정)
+      - [Offerwall Activity 설정](#offerwall-activity-설정)
+      - [UnityPlayer 설정](#unityplayer-설정)
+    - [proguard 설정](#proguard-설정)
+  - [iOS 설정](#ios-설정)
+    - [앱 추적 동의](#앱-추적-동의)
+      - [앱 추적 동의 창 띄우기](#앱-추적-동의-창-띄우기)
+    - [Embed Framework 설정](#embed-framework-설정)
+  
 - [2. Publisher API](#2-publisher-api)
   - [광고 목록 띄우기](#광고-목록-띄우기)
     - [유저 식별 값 설정](#유저-식별-값-설정)
+    - [COPPA 설정](#coppa-설정)
     - [광고 목록 띄우기 (전체화면)](#광고-목록-띄우기-전체화면)
     - [EventHandler](#eventhandler)
       - [EventHandler 스크립트 만들기](#eventhandler-스크립트-만들기)
@@ -29,9 +36,9 @@
       - [TnkAd.Plugin - withdrawPoints()](#tnkadplugin---withdrawpoints)
       - [TnkAd.Plugin - queryPublishState()](#tnkadplugin---querypublishstate)
 
-## 1. Unity Settings
+# 1. Unity Settings
 
-### Plugin Download
+## Plugin Download
 
 적용 할 Unity 프로젝트를 연 상태에서 다음 이미지와 같이 프로젝트의 Packages폴더를 오른 클릭 후 폴더를 열어주세요
 
@@ -52,7 +59,9 @@ Android, iOS, TnkAd 세개의 폴더가 있습니다.
 ```
 
 
-### Plugin Setting
+## Plugin Setting
+
+## Android 설정
 
 다음과 같이 안드로이드 빌드 설정 파일을 설정 해야합니다.
 
@@ -292,24 +301,7 @@ build phases -> Embed Frameworks 항목을 열고
 ![unity_ios_3](./img/unity_ios_3.png)
 
 
-### COPPA 설정
 
-COPPA는 [미국 어린이 온라인 개인정보 보호법](https://www.ftc.gov/tips-advice/business-center/privacy-and-security/children's-privacy) 및 관련 법규입니다. 구글 에서는 앱이 13세 미만의 아동을 대상으로 서비스한다면 관련 법률을 준수하도록 하고 있습니다. 연령에 맞는 광고가 보일 수 있도록 아래의 옵션을 설정하시기 바랍니다.
-
-```c#
-using UnityEngine;
-using System.Collections;
-
-public class TnkUITest : MonoBehaviour {
-
-  void Start ()
-  {
-  	TnkAd.Plugin.Instance.setCOPPA(true); // ON - 13세 미안 아동을 대상으로 한 서비스 일경우 사용
-  	TnkAd.Plugin.Instance.setCOPPA(false); // OFF - 기본값
-  
-  // ...
-}
-```
 
 ## 2. Publisher API
 
@@ -392,6 +384,25 @@ public class TnkUITest : MonoBehaviour {
   void Start ()
   {
   	TnkAd.RwdPlugin2.Instance.setUserName("test_name");
+  
+  // ...
+}
+```
+
+#### COPPA 설정
+
+COPPA는 [미국 어린이 온라인 개인정보 보호법](https://www.ftc.gov/tips-advice/business-center/privacy-and-security/children's-privacy) 및 관련 법규입니다. 구글 에서는 앱이 13세 미만의 아동을 대상으로 서비스한다면 관련 법률을 준수하도록 하고 있습니다. 연령에 맞는 광고가 보일 수 있도록 아래의 옵션을 설정하시기 바랍니다.
+
+```c#
+using UnityEngine;
+using System.Collections;
+
+public class TnkUITest : MonoBehaviour {
+
+  void Start ()
+  {
+  	TnkAd.Plugin.Instance.setCOPPA(true); // ON - 13세 미안 아동을 대상으로 한 서비스 일경우 사용
+  	TnkAd.Plugin.Instance.setCOPPA(false); // OFF - 기본값
   
   // ...
 }
