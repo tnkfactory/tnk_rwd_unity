@@ -401,8 +401,8 @@ public class TnkUITest : MonoBehaviour {
 
   void Start ()
   {
-  	TnkAd.Plugin.Instance.setCOPPA(true); // ON - 13세 미안 아동을 대상으로 한 서비스 일경우 사용
-  	TnkAd.Plugin.Instance.setCOPPA(false); // OFF - 기본값
+  	TnkAd.RwdPlugin2.Instance.setCOPPA(true); // ON - 13세 미안 아동을 대상으로 한 서비스 일경우 사용
+  	TnkAd.RwdPlugin2.Instance.setCOPPA(false); // OFF - 기본값
   
   // ...
 }
@@ -550,7 +550,7 @@ if (GUI.Button(new Rect (100, 400, 150, 80), "Query point")) {
     Debug.Log("Query point");
     
     // be sure that put handler object named 'testhandler' in your scene. (It should be named in Unity Inspector)
-    TnkAd.Plugin.Instance.queryPoint("testhandler"); 
+    TnkAd.RwdPlugin2.Instance.queryPoint("testhandler"); 
 }
 ```
 
@@ -640,14 +640,14 @@ public class TnkUITest : MonoBehaviour {
       Debug.Log("Query point");
 
       // be sure that put handler object named 'testhandler' in your scene. (It should be named in Unity Inspector)
-      TnkAd.Plugin.Instance.queryPoint("testhandler"); 
+      TnkAd.RwdPlugin2.Instance.queryPoint("testhandler"); 
     }
 
     if (GUI.Button(new Rect(100, 500, 150, 80), "Purchase Item")) {
       Debug.Log("Purchase Item");
         
       // be sure that put handler object named 'testhandler' in your scene. (It should be named in Unity Inspector)
-      TnkAd.Plugin.Instance.purchaseItem(100, "item01", "testhandler"); 
+      TnkAd.RwdPlugin2.Instance.purchaseItem(100, "item01", "testhandler"); 
     }
   }
 }
@@ -681,8 +681,8 @@ public class TnkUITest : MonoBehaviour {
 
   void Start ()
   {
-    TnkAd.Plugin.Instance.setUserName("test_name");
-    TnkAd.Plugin.Instance.queryPublishState("testhandler"); 
+    TnkAd.RwdPlugin2.Instance.setUserName("test_name");
+    TnkAd.RwdPlugin2.Instance.queryPublishState("testhandler"); 
   }
   
   // ...
