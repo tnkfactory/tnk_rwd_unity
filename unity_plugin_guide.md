@@ -42,6 +42,14 @@
 
 [샘플 영상](https://drive.google.com/file/d/1Al5AX6bRX2yeWKf5OHhMbpox18r_TwqY/view?usp=sharing)
 
+**샘플 영상 개발 환경**
+
+기기 : 맥스튜디오 m2
+
+OS : ventura 13.4
+
+유니티 : 2022.3.12f1
+
 ## Plugin Download
 
 적용 할 Unity 프로젝트를 연 상태에서 다음 이미지와 같이 프로젝트의 Packages폴더를 오른 클릭 후 폴더를 열어주세요
