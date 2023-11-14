@@ -551,7 +551,8 @@ public class MyTnkHandler : TnkAd.EventHandler {
 
 #### GameObject에 추가하고 Handler Name 지정
 
-![Unity_02](./img/Unity_02.png)
+![Unity_02](./img/unity_setting_7.png)
+
 
 #### 설정한 Handler Name을 사용하여 Plugin API 호출
 
