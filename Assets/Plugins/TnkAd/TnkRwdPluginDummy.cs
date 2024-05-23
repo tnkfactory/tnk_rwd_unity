@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 
 public class TnkRwdPluginDummy : ITnkRwdPlugin2 {
-    
+
     private static TnkRwdPluginDummy _instance;
 
     public static TnkRwdPluginDummy Instance {
@@ -78,6 +78,11 @@ public class TnkRwdPluginDummy : ITnkRwdPlugin2 {
 
     void ITnkRwdPlugin2.queryPublishState(string handlerName) {
         Debug.Log("queryPublishState");
+    }
+
+    void ITnkRwdPlugin2.setTnkAdAnalytics(string handlerName) {
+        Debug.Log("setTnkAdAnalytics");
+
     }
 
 }

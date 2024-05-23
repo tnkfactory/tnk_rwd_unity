@@ -58,7 +58,7 @@ OS : ventura 13.4
 
 Tnk에서 제공하는 tnkad-rwd.unitypackage 파일을 다운 받습니다.
 
-**[[Unity Plugin Download](./sdk/tnk_unity_lib.zip)]**
+**[[Unity Plugin Download](./sdk/tnk_unity_lib_0523.zip)]**
 
 해당 폴더에 다운받은 tnk sdk파일을 복사합니다.
 
@@ -511,6 +511,16 @@ namespace TnkAd {
     public virtual void onReturnWithdrawPoints(int point) {}
     public virtual void onReturnPurchaseItem(long curPoint, long seqId) {}
     public virtual void onReturnQueryPublishState(int state) {}
+
+
+    // event
+	const string SELECT_CATEGORY = "tnk_ev_category";       // 카테고리 선택          // 카테고리 아이디, 카테고리명
+	const string SELECT_FILTER = "tnk_ev_filter";           // 필터 선택            // 필터 아이디, 필터명
+	const string CLICK_AD = "tnk_ev_ad_click";              // 광고 클릭            // app id, app name(광고명)
+	const string ACTIVITY_FINISH = "activity_finish";       // 오퍼월 액티비티 종료됨 (안드로이드 오퍼월 화면 종료)
+	const string OFFERWALL_REMOVED = "OfferwallRemoved";    // 오퍼월 UIView 제거됨 (iOS 오퍼월 화면 종료)
+	
+    public virtual void onOfferwallEvent(string jsonEvent) { }
 
     // TnkAdListener methods
     public virtual void onFailure(int errCode) { }

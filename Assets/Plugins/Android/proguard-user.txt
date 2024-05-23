@@ -1,1 +1,2 @@
+// tnk SDK
 -keep class com.tnkfactory.** { *;}

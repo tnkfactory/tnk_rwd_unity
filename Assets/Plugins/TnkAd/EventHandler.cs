@@ -4,7 +4,7 @@ using System;
 
 namespace TnkAd {
 	public class EventHandler : MonoBehaviour {
-		// publishing state 
+		// publishing state
 		public const int PUB_STAT_NO = 0; // not publishing yet
 		public const int PUB_STAT_YES = 1; // publising state
 		public const int PUB_STAT_TEST = 2; // testing state
@@ -25,13 +25,13 @@ namespace TnkAd {
 
 		// Set 'Handler Name' in Unity Inspector
 		public string handlerName;
-		
+
 		void Awake() {
             //Debug.Log("##### Awake() handlerName = " + handlerName);
             gameObject.name = handlerName;
 			DontDestroyOnLoad( gameObject );
 		}
-		
+
 		public void onReturnQueryPointBinding(string point) {
 			//Debug.Log("##### onReturnQueryPointBinding() point = " + point);
 			int pnt = int.Parse (point);
@@ -63,12 +63,12 @@ namespace TnkAd {
             //Debug.Log("##### onFailureBinding() error = " + error);
             onFailure(errCode);
 		}
-		
+
 		public void onLoadBinding(string dummy) {
 			//Debug.Log("##### onLoadBinding() ");
 			onLoad ();
 		}
-		
+
 		public void onShowBinding(string dummy) {
 			//Debug.Log("##### onShowBinding() ");
 			onShow ();
@@ -81,16 +81,33 @@ namespace TnkAd {
             onClose(typeCode);
         }
 
+		public void onOfferwallEventBinding(string jsonEvent) {
+			// Debug.Log("##### onOfferwallEventBinding " + jsonEvent);
+			onOfferwallEvent(jsonEvent);
+		}
+
 		// ServiceCallback methods
 		public virtual void onReturnQueryPoint(int point) {}
 		public virtual void onReturnWithdrawPoints(int point) {}
 		public virtual void onReturnPurchaseItem(long curPoint, long seqId) {}
 		public virtual void onReturnQueryPublishState(int state) {}
 
+
+		// event
+		const string SELECT_CATEGORY = "tnk_ev_category";       // 카테고리 선택          // 카테고리 아이디, 카테고리명
+		const string SELECT_FILTER = "tnk_ev_filter";           // 필터 선택            // 필터 아이디, 필터명
+		const string CLICK_AD = "tnk_ev_ad_click";              // 광고 클릭            // 광고 아이디, 광고명
+		const string ACTIVITY_FINISH = "activity_finish";       // 오퍼월 액티비티 종료됨 (안드로이드 오퍼월 화면 종료)
+		const string OFFERWALL_REMOVED = "OfferwallRemoved";    // 오퍼월 UIView 제거됨 (iOS 오퍼월 화면 종료)
+
+		public virtual void onOfferwallEvent(string jsonEvent) { }
+
 		// TnkAdListener methods
 		public virtual void onFailure(int errCode) { }
         public virtual void onLoad() { }
         public virtual void onShow() { }
         public virtual void onClose(int type) { }
+
+
     }
 }

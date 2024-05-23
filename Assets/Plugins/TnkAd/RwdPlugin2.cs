@@ -16,9 +16,9 @@ namespace TnkAd {
 				return _instance;
 			}
 		}
-        
+
 #if UNITY_ANDROID
-        private TnkAdPluginAndroid tnkRwd = TnkAdPluginAndroid.Instance; 
+        private TnkAdPluginAndroid tnkRwd = TnkAdPluginAndroid.Instance;
 		public RwdPlugin2() {
 			//pluginClass = new AndroidJavaClass("com.tnkfactory.ad.unity.TnkUnityPlugin");
 		}
@@ -83,9 +83,12 @@ namespace TnkAd {
             tnkRwd.queryPublishState(handlerName);
         }
 
-    
+        public void setTnkAdAnalytics(string handlerName) {
+            tnkRwd.setTnkAdAnalytics(handlerName);
+        }
+
 # elif UNITY_IOS
-        private TnkRwdPluginIos tnkRwd = TnkRwdPluginIos.Instance; 
+        private TnkRwdPluginIos tnkRwd = TnkRwdPluginIos.Instance;
 		public RwdPlugin2() {
 			//pluginClass = new AndroidJavaClass("com.tnkfactory.ad.unity.TnkUnityPlugin");
 		}
@@ -148,6 +151,10 @@ namespace TnkAd {
 
         public void queryPublishState(string handlerName) {
             tnkRwd.queryPublishState(handlerName);
+        }
+
+        public void setTnkAdAnalytics(string handlerName) {
+            tnkRwd.setTnkAdAnalytics(handlerName);
         }
 #endif
     }

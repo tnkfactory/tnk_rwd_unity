@@ -65,18 +65,20 @@ namespace TnkAd
 
 		[DllImport("__Internal")]
 		private static extern void _queryPublishState(string handleName);
-		
-		
-		
-		
-		
+
+		[DllImport("__Internal")]
+		private static extern void _setTnkAdAnalytics(string handleName);
+
+
+
+
 		// #region Callback from native
 		//
 		// void __onReturnQueryPointBinding(string message)
 		// {
 		// 	(impl as GarlicWebviewiOSImpl).__fromnative_onReceiverdError (message);
 		// }
-		
+
 
 		///////////////
 		public void initInstance()
@@ -148,6 +150,11 @@ namespace TnkAd
 		{
 			_queryPublishState(handleName);
 		}
+
+		public void setTnkAdAnalytics(string handlerName)
+		{
+            _setTnkAdAnalytics(handlerName);
+        }
 
 	}
 }

@@ -102,5 +102,9 @@ namespace TnkAd
         {
             pluginClass.CallStatic("queryPublishState", handlerName);
         }
+
+        public void setTnkAdAnalytics(string handlerName) {
+            pluginClass.CallStatic("setTnkAdAnalytics", handlerName);
+        }
     }
 }

@@ -4,7 +4,7 @@ public interface ITnkRwdPlugin2
     void  initInstance();
 
     void  initInstance(string appId);
-        
+
     void  applicationStarted();
 
     void  setUserName(string userName);
@@ -28,4 +28,5 @@ public interface ITnkRwdPlugin2
     void  purchaseItem(int cost, string itemName, string handleName);
 
     void  queryPublishState(string handleName);
-    }
+    void  setTnkAdAnalytics(string handleName);
+}
