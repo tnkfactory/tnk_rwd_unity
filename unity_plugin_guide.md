@@ -29,6 +29,7 @@
       - [EventHandler 스크립트 만들기](#eventhandler-스크립트-만들기)
       - [GameObject에 추가하고 Handler Name 지정](#gameobject에-추가하고-handler-name-지정)
       - [설정한 Handler Name을 사용하여 Plugin API 호출](#설정한-handler-name을-사용하여-plugin-api-호출)
+    - [사용자 UI/UX 이벤트 리스너 설정](#사용자-uiux-이벤트-리스너-설정)
     - [포인트 조회 및 인출](#포인트-조회-및-인출)
     - [그밖의 기능들](#그밖의-기능들)
       - [TnkAd.Plugin - queryPoint()](#tnkadplugin---querypoint)
@@ -337,6 +338,8 @@ public class TnkUITest : MonoBehaviour
 #endif
         // 유저 식별값 설정
         TnkAd.RwdPlugin2.Instance.setUserName("test_name");
+        // 오퍼월 이벤트 전달받을 핸들러 설정
+        TnkAd.RwdPlugin2.Instance.setTnkAdAnalytics("testhandler");
         // COPPA 설정
         TnkAd.RwdPlugin2.Instance.setCOPPA(false);
     }
@@ -513,7 +516,7 @@ namespace TnkAd {
     public virtual void onReturnQueryPublishState(int state) {}
 
 
-    // event
+    // 오퍼월 UI 이벤트
 	const string SELECT_CATEGORY = "tnk_ev_category";       // 카테고리 선택          // 카테고리 아이디, 카테고리명
 	const string SELECT_FILTER = "tnk_ev_filter";           // 필터 선택            // 필터 아이디, 필터명
 	const string CLICK_AD = "tnk_ev_ad_click";              // 광고 클릭            // app id, app name(광고명)
@@ -522,7 +525,7 @@ namespace TnkAd {
 	
     public virtual void onOfferwallEvent(string jsonEvent) { }
 
-    // TnkAdListener methods
+    // DA 지면광고 이벤트 처리용
     public virtual void onFailure(int errCode) { }
     public virtual void onLoad() { }
     public virtual void onShow() { }
@@ -537,6 +540,7 @@ EventHandler를 사용하기 위해서 다음과 같이 진행하세요.
 2. 처리해야할 메소드를 override 하여 구현합니다. (EventHandler의 모든 메소드를 override 하실 필요는 없습니다. 처리해야햘 메소드만 구현하세요.)
 3. 구현된 클래스를 Unity의 Scene 화면의 GameObject 객체에 추가합니다. (기존의 GameObject에 추가하셔도 되고 새로운 GameObject를 생성하시어 추가하여도 상관없습니다.)
 4. Unity Inspector 화면에서 추가한 스크립트의 Handler Name 속성에 이름을 지정합니다. 여기에 지정된 이름이 TnkAd.Plugin의 API 호출시 사용됩니다.
+5. 사용자의 UI/UX 이벤트에 대한 응답을 받기 위해서는 setTnkAdAnalytics() 함수를 사용하여 EventHandler 객체를 지정해주어야 합니다.
 
 #### EventHandler 스크립트 만들기
 
@@ -574,6 +578,44 @@ if (GUI.Button(new Rect (100, 400, 150, 80), "Query point")) {
     
     // be sure that put handler object named 'testhandler' in your scene. (It should be named in Unity Inspector)
     TnkAd.RwdPlugin2.Instance.queryPoint("testhandler"); 
+}
+```
+### 사용자 UI/UX 이벤트 리스너 설정 
+
+#### TnkAd.Plugin - setTnkAdAnalytics()
+
+##### Method
+
+- void setTnkAdAnalytics(string handlerName)
+
+##### Description
+
+오퍼월 화면에서 광고 선택, 카테고리/필터 선택, 오퍼월 화면 종료 등의 이벤트 발생시 이벤트를 받을 수 있도록 설정합니다.
+안드로이드는 오퍼월 액티비티가 출력되는 동안 유니티 액티비티가 멈추게 되고 메세지를 전달받지 못하는 상태가 되기 때문에 
+오퍼월 화면 종료 후 이벤트가 한번에 전달됩니다.
+이벤트의 종류에 대해서는 아래의 항목을 참조 하시기 바랍니다.
+[EventHandler](#eventhandler) 
+
+##### Parameters
+
+| 파라메터 명칭 | 내용                      |
+| ------------- |-------------------------|
+| handlerName   | 이벤트를 받을 핸들러의 이름을 지정합니다. |
+
+### 샘플코드
+MyTnkHandler.cs에 있는 내용을 참고 하시기 바랍니다.    
+```c#
+
+public override void onOfferwallEvent(string message)
+{
+    var jObj = JSON.Parse(message);
+    string ev = jObj["event"];
+    string id = jObj["item_id"];
+    string name = jObj["item_name"];
+    Debug.Log("##### offerwall event : " + ev + " - id : " + id + " - name : " + name );
+    if(ev == ACTIVITY_FINISH || ev == OFFERWALL_REMOVED) {
+        Debug.Log("##### offerwall closed #####");
+    }
 }
 ```
 
@@ -705,7 +747,9 @@ public class TnkUITest : MonoBehaviour {
   void Start ()
   {
     TnkAd.RwdPlugin2.Instance.setUserName("test_name");
-    TnkAd.RwdPlugin2.Instance.queryPublishState("testhandler"); 
+    TnkAd.RwdPlugin2.Instance.queryPublishState("testhandler");
+    TnkAd.RwdPlugin2.Instance.setTnkAdAnalytics("testhandler");
+    TnkAd.RwdPlugin2.Instance.setCOPPA(false); 
   }
   
   // ...
