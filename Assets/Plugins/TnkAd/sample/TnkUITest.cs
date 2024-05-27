@@ -14,11 +14,10 @@ public class TnkUITest : MonoBehaviour
 #endif
         // 유저 식별값 설정
         TnkAd.RwdPlugin2.Instance.setUserName("test_name");
-        // 오퍼월 이벤트 전달받을 핸들러 설정
-        TnkAd.RwdPlugin2.Instance.setTnkAdAnalytics("testhandler");
-
         // COPPA 설정
         TnkAd.RwdPlugin2.Instance.setCOPPA(false);
+        // 오퍼월 이벤트 전달받을 핸들러 설정
+        TnkAd.RwdPlugin2.Instance.setTnkAdAnalytics("testhandler");
     }
 
     void Update()

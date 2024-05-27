@@ -141,7 +141,7 @@ import AppTrackingTransparency
                              multiRewardPoint: Int,
                              multiRewardCount: Int) {
         if let ch = UnityPlugin.reqHandler{
-            ch("didAdDataLoaded");
+            ch("{\"event\":\"tnk_ev_data_loaded\", \"item_id\":\"didAdDataLoaded\", \"item_name\":\"didAdDataLoaded\"}");
         }
 
         // print("### message = \(headerMessage)")
@@ -149,22 +149,22 @@ import AppTrackingTransparency
 
     @objc public func didMenuSelected(menuId: Int, menuName:String, filterId: Int, filterName:String) {
         if let ch = UnityPlugin.reqHandler{
-            ch("{\"evnet\":\"tnk_ev_category\", \"item_id\":\"\(menuId)\", \"item_name\":\"\(menuName)\"}");
-            ch("{\"evnet\":\"tnk_ev_filter\", \"item_id\":\"\(filterId)\", \"item_name\":\"\(filterName)\"}");
+            ch("{\"event\":\"tnk_ev_category\", \"item_id\":\"\(menuId)\", \"item_name\":\"\(menuName)\"}");
+            ch("{\"event\":\"tnk_ev_filter\", \"item_id\":\"\(filterId)\", \"item_name\":\"\(filterName)\"}");
         }
         // print("### menuId: \(menuId) \(menuName), filterId: \(filterId) \(filterName)")
     }
 
     @objc public func didAdItemClicked(appId: Int, appName: String) {
         if let ch = UnityPlugin.reqHandler{
-            ch("{\"evnet\":\"tnk_ev_ad_click\", \"item_id\":\"\(appId)\", \"item_name\":\"\(appName)\"}");
+            ch("{\"event\":\"tnk_ev_ad_click\", \"item_id\":\"\(appId)\", \"item_name\":\"\(appName)\"}");
         }
         // print("### adItem: \(appId) \(appName)")
     }
 
     @objc public func didOfferwallRemoved() {
         if let ch = UnityPlugin.reqHandler{
-            ch("{\"evnet\":\"OfferwallRemoved\", \"item_id\":\"AdOfferwallViewController\", \"item_name\":\"AdOfferwallViewController\"}");
+            ch("{\"event\":\"OfferwallRemoved\", \"item_id\":\"AdOfferwallViewController\", \"item_name\":\"AdOfferwallViewController\"}");
         }
         // print("### offerwall removed")
     }

@@ -90,6 +90,13 @@ extern "C" {
         }];
     }
 
+    void _setTnkAdAnalytics(char *handlerName){
+        NSString *nsSt = [NSString stringWithUTF8String:handlerName];
+        char * utf8String = strdup([nsSt UTF8String]);
+        [[UnityPlugin shared]setTnkAdAnalytics:^(NSString * msg) {
+            UnitySendMessage(utf8String, "onOfferwallEventBinding", [msg UTF8String]);
+        }];
+    }
     
     
 
