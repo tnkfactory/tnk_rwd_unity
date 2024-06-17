@@ -59,7 +59,7 @@ OS : ventura 13.4
 
 Tnk에서 제공하는 tnkad-rwd.unitypackage 파일을 다운 받습니다.
 
-**[[Unity Plugin Download](./sdk/tnk_unity_lib_0527.zip)]**
+**[[Unity Plugin Download](./sdk/tnk_unity_lib_0617.zip)]**
 
 해당 폴더에 다운받은 tnk sdk파일을 복사합니다.
 

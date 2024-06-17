@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api 'com.tnkfactory:rwd:8.04.11'
+    api 'com.tnkfactory:rwd:8.06.31'
 **DEPS**}
 
 android {
