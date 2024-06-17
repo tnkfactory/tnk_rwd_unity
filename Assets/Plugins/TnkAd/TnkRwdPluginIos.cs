@@ -20,7 +20,7 @@ namespace TnkAd
 				return _instance;
 			}
 		}
-
+#if UNITY_IOS
 		[DllImport("__Internal")]
 		private static extern int _addTwoNumberInIOS(int a, int b);
 
@@ -155,6 +155,6 @@ namespace TnkAd
 		{
             _setTnkAdAnalytics(handlerName);
         }
-
+#endif
 	}
 }
