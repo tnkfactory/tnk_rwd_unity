@@ -131,7 +131,7 @@ mainTemplate.gradle 파일에 TNK SDK 설정을 추가해주세요.
 
 ```gradle
 dependencies {
-    api 'com.tnkfactory:rwd:8.04.11'
+    api 'com.tnkfactory:rwd:8.08.57'
 }
 ```
 
