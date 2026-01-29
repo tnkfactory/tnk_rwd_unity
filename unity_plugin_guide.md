@@ -59,17 +59,11 @@ OS : ventura 13.4
 
 Tnk에서 제공하는 tnkad-rwd.unitypackage 파일을 다운 받습니다.
 
-**[[Unity Plugin Download](./sdk/tnk_unity_lib_0617.zip)]**
+**[[Unity Plugin Download](./sdk/tnk_rwd_package.unitypackage)]**
 
-해당 폴더에 다운받은 tnk sdk파일을 복사합니다.
+적용할 Unity 프로젝트를 연 상태에서 다운로드 받은 tnk_rwd_package.unitypackage 파일을 실행하면 Plugin 파일들에 대한 import 창이 열립니다.
 
-Android, iOS, TnkAd 세개의 폴더가 있습니다.
-
-기존 폴더가 있다면 폴더를 열고 해당 폴더 안의 파일들을 복사합니다.
-
-```diff
-- 주의 : 폴더를 덮어쓰기 하면 이전 내용물이 삭제 될 수 있으니 주의 하시기 바랍니다.
-```
+모두 선택된 상태에서 [import] 버튼을 누르면 Plugin 파일들이 프로젝트로 import 됩니다.
 
 
 ## Plugin Setting
@@ -99,16 +93,6 @@ Android, iOS, TnkAd 세개의 폴더가 있습니다.
 
 설정 파일들을 열고 다음과 같은 설정을 추가해주세요.
 
-### gradleTemplate.properties 설정
-
-gradleTemplate.properties 파일에 AndroidX 설정을 추가해주세요.
-
-```gradle
-android.useAndroidX=true
-android.enableJetifier=true
-```
-
-![unity_config_1](./img/unity_config_1.png)
 
 ### baseProjectTemplate.gradle 설정
 
@@ -322,6 +306,9 @@ Unity용 Plugin 으로 TnkAd.Plugin 클래스와 TnkAd.EventHandler 클래스가
 Plugin 클래스는 광고목록이나 중간 전면광고 등의 TnkAd의 기능을 사용하기 위해서는 제공되는 클래스입니다. EventHandler 클래스는 API 중 비동기로 결과를 받아야 하는 경우에 사용되는 클래스입니다.
 
 ### 광고 목록 띄우기
+샘플 UI와 샘플 handler 설정 예시
+![unity_sample_setting_1.png](img/unity_sample_setting_1.png)
+
 
 다운받은 라이브러리의 TnkAd/sample/TnkUITest.cs 를 참고하세요
 
